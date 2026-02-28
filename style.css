@@ -31,8 +31,8 @@
   box-sizing: border-box;
 }
 html {
-  scroll-behavior: smooth;
-}
+  scroll-behavior: auto;
+} /* JS handles smooth scroll */
 body {
   background: var(--bg);
   color: var(--white);
