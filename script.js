@@ -1,3 +1,8 @@
+/* ============================================================
+   SHUBHAM TIWARI — PORTFOLIO SCRIPTS
+   script.js
+   ============================================================ */
+
 /* ======================================================
    1. CUSTOM CURSOR
    ====================================================== */
@@ -127,7 +132,33 @@ function type() {
 type();
 
 /* ======================================================
-      4. STICKY NAVBAR + SCROLL SPY
+      4. SMOOTH SCROLL FOR ALL NAV LINKS
+      ====================================================== */
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    const targetId = this.getAttribute("href");
+    const target = document.querySelector(targetId);
+    if (!target) return;
+
+    const navbarHeight = document.getElementById("navbar").offsetHeight;
+    const targetPosition =
+      target.getBoundingClientRect().top + window.scrollY - navbarHeight;
+
+    window.scrollTo({
+      top: targetPosition,
+      behavior: "smooth",
+    });
+
+    // Close mobile menu if open
+    document.getElementById("hamburger").classList.remove("open");
+    document.getElementById("mobileNav").classList.remove("open");
+  });
+});
+
+/* ======================================================
+      5. STICKY NAVBAR + SCROLL SPY
       ====================================================== */
 const navbar = document.getElementById("navbar");
 const scrollBtn = document.getElementById("scrollTop");
